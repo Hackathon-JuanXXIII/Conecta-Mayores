@@ -1,16 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image,TouchableHighlight } from 'react-native';
+
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import PantallaConfirEliminar from './screens/PantallaConfirEliminar';
+import PantallaUsuario from './screens/PantallaUsuario';
+const Stack = createNativeStackNavigator();
 const icon=require('./assets/icon.png')
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Image source={icon} style={{width:100, height:100}} />
-            <Text>Open up App.js to start working on your app!</Text>
-            <TouchableHighlight onPress={() => alert("hola")} style={{backgroundColor:'green', borderRadius:3 }} >
-                 <Text>Boton</Text>
-            </TouchableHighlight>
-            <StatusBar style="auto" />
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Usuario" component={PantallaUsuario} />
+                <Stack.Screen name="ConfirmarEliminar" component={PantallaConfirEliminar} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
